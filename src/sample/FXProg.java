@@ -228,7 +228,6 @@ public class FXProg extends Application {
         });
         canvas.setOnMouseReleased(event -> {
             if (isConfigButtonSelected()) {
-                System.out.println("config --> canvas go back");
                 canvas.toBack();
             } else {
                 setX = setY = null;
@@ -236,7 +235,7 @@ public class FXProg extends Application {
                 if (last != null && valid != null && !valid.getAsBoolean()) {
                     history.remove(history.size() - 1);
                     center.getChildren().remove(last);
-                    System.out.println("Removing empty Shape: " + last);
+                    System.out.println("Info: Removing empty Shape: " + last);
                 } else if (!history.isEmpty()) {
                     undoB.setDisable(false);
                 }
@@ -250,7 +249,6 @@ public class FXProg extends Application {
         root.setTop(top);
 
         String css = getClass().getResource("paint.css").toExternalForm();
-        System.out.println(css);
         root.getStylesheets().add(css);
 
         primaryStage.setScene(mainScene);
@@ -278,14 +276,14 @@ public class FXProg extends Application {
             if (moveB.isSelected()) {
                 originX = event.getSceneX();
                 originY = event.getSceneY();
-                System.out.println("pressed at " + event.getX() + "|" + event.getY());
+//                System.out.println("pressed at " + event.getX() + "|" + event.getY());
             }
         });
         s.setOnMouseDragged(event -> {
             if (moveB.isSelected()) {
                 double moveX = event.getSceneX() - originX;
                 double moveY = event.getSceneY() - originY;
-                System.out.println("drag at " + event.getSceneX() + "|" + event.getSceneY() + "with origin " + originX + "|" + originY + " --> move for " + moveX + "|" + moveY);
+//                System.out.println("drag at " + event.getSceneX() + "|" + event.getSceneY() + "with origin " + originX + "|" + originY + " --> move for " + moveX + "|" + moveY);
                 s.getTransforms().addAll(new Translate(moveX, moveY));
                 originX = event.getSceneX();
                 originY = event.getSceneY();
@@ -296,15 +294,15 @@ public class FXProg extends Application {
                 int dir = (forwB.isSelected() ? 1 : -1);
                 List c = center.getChildren();
                 int idx = center.getChildren().indexOf(s);
-                System.out.println("Moving in dir=" + dir + ", from idx=" + idx + ", shape=" + s);
-                if (idx + dir >= 0 && idx + dir < c.size()) {
+//                System.out.println("Moving in dir=" + dir + ", from idx=" + idx + ", shape=" + s);
+                if (idx + dir > 0 && idx + dir < c.size()) {
                     Object o = c.remove(idx);
                     c.add(idx + dir, o);
                 } else {
-                    if (idx == 0) {
-                        System.out.println("Info: Shape is already on bottom -" + s);
+                    if (idx == 1) {
+                        System.out.println("Info: Shape is already on bottom - " + s);
                     } else if (idx == c.size() - 1) {
-                        System.out.println("Info: Shape is already at top -" + s);
+                        System.out.println("Info: Shape is already at top - " + s);
                     } else {
                         System.out.println("Warning: Shape not found in center - " + s);
                     }
