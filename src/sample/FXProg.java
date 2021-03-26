@@ -194,9 +194,7 @@ public class FXProg extends Application {
 //                    e.setCenterY(e.getCenterY() + (newRadY - e.getRadiusY()));
                     e.setRadiusY(newRadY);
                 };
-                valid = () -> {
-                    return e.getRadiusX() > 0 && e.getRadiusY() > 0;
-                };
+                valid = () -> e.getRadiusX() > 0 && e.getRadiusY() > 0;
                 center.getChildren().addAll(e);
                 configNewShape(e);
             } else if (rectB.isSelected()) {
@@ -206,26 +204,16 @@ public class FXProg extends Application {
                     r.setFill(fillCol.getValue());
                 else
                     r.setFill(Color.TRANSPARENT);
-                setX = x -> {
-                    r.setWidth(x - r.getX());
-                };
-                setY = y -> {
-                    r.setHeight(y - r.getY());
-                };
-                valid = () -> {
-                    return r.getHeight() > 0 && r.getWidth() > 0;
-                };
+                setX = x -> r.setWidth(x - r.getX());
+                setY = y -> r.setHeight(y - r.getY());
+                valid = () -> r.getHeight() > 0 && r.getWidth() > 0;
                 center.getChildren().addAll(r);
                 configNewShape(r);
             } else if (drawB.isSelected()) {
                 Polyline p = new Polyline(event.getX(), event.getY());
                 p.setStroke(lineCol.getValue());
-                setX = x -> {
-                    p.getPoints().addAll(x);
-                };
-                setY = y -> {
-                    p.getPoints().addAll(y);
-                };
+                setX = x -> p.getPoints().addAll(x);
+                setY = y -> p.getPoints().addAll(y);
                 valid = () -> true;
                 center.getChildren().addAll(p);
                 configNewShape(p);
@@ -323,12 +311,5 @@ public class FXProg extends Application {
                 }
             }
         });
-    }
-
-    //unused
-    private void initShapeSelectToggleGroup(ToggleGroup shapeSelect, ToggleButton... buttons) {
-        for (ToggleButton tb : buttons) {
-            tb.setToggleGroup(shapeSelect);
-        }
     }
 }
