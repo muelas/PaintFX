@@ -1,6 +1,7 @@
 # PaintFX
 Just a small Paint program I wrote, when experimenting with JavaFX
-(Created with IntelliJ IDEA Community Edition
+
+(Created with IntelliJ IDEA Community Edition, using openjdk-16 and javafx-sdk-16)
 
 # Features
 Draw:
