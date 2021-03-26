@@ -1,0 +1,8 @@
+.toggle-button {
+    -fx-text-fill: black;
+}
+
+.toggle-button:selected {
+    -fx-text-fill: black;
+    -fx-base: red;
+}
