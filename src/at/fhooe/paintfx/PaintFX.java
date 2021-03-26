@@ -1,4 +1,4 @@
-package sample;
+package at.fhooe.paintfx;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 
-public class FXProg extends Application {
+public class PaintFX extends Application {
 
     private Button redoB;
     private Button undoB;
@@ -83,9 +83,9 @@ public class FXProg extends Application {
     @Override
     public void init() throws Exception {
         super.init();
-        Image forw = new Image("sample/img/tofront.png");
+        Image forw = new Image("at/fhooe/paintfx/img/tofront.png");
         toFrontCursor = new ImageCursor(forw);
-        Image back = new Image("sample/img/toback.png");
+        Image back = new Image("at/fhooe/paintfx/img/toback.png");
         toBackCursor = new ImageCursor(back);
     }
 
